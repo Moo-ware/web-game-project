@@ -1,0 +1,819 @@
+@import url('https://fonts.cdnfonts.com/css/norse');
+@import url('https://fonts.cdnfonts.com/css/harald-runic');
+@import url('https://fonts.googleapis.com/css?family=Mate SC');
+
+@font-face {
+  font-family: 'titleFont';
+  src: url('fonts/ElderMagicShadow-wKM3.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'buttonFont';
+  src: url('fonts/warmongerbb.ttf') format('truetype');
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+  }
+  
+  .screen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background-color: black;
+    font-family: 'Arial', serif;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* This class will be used for the typing effect */
+  .typing-animation {
+    border-right: .15em solid white;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  #playButton {
+    margin-top : 200px;
+    font-family: 'buttonFont', sans-serif;
+    font-size: 24px;
+    color: #FFF; /* White text */
+    background-color: transparent; /* Dark background for the button */
+    border: 2px solid #777; /* Slightly lighter border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Top/bottom and left/right padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    cursor: pointer; /* Cursor changes to pointer to indicate it's clickable */
+  }
+
+  #playButton:hover {
+    animation: flameAnimation 1s ease-in-out infinite alternate;
+    -moz-animation: flameAnimation 1s ease-in-out infinite alternate;
+    -webkit-animation: flameAnimation 1s ease-in-out infinite alternate;
+    -o-animation: flameAnimation 1s ease-in-out infinite alternate;
+  }
+
+  .enlarge {
+    animation: enlargeEffect 2.5s forwards;
+    }
+
+    @keyframes enlargeEffect {
+        to {
+            transform: scale(2);
+        }
+    }
+
+    .explode {
+    animation: explodeEffect 2s forwards;
+    }
+
+    @keyframes explodeEffect {
+        to {
+            opacity: 0;
+            transform: scale(20) translateX(var(--translateX)) translateY(var(--translateY));
+        }
+    }
+
+  @keyframes flameAnimation {
+    0% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 0 0 20px #fefcc9, 
+        10px -10px 30px #feec85, 
+        -20px -20px 40px #ffae34, 
+        20px -40px 50px #ec760c, 
+        -20px -60px 60px #cd4606, 
+        0 -80px 70px #973716, 
+        10px -90px 80px #451b0e;
+    }
+}
+
+  @-moz-keyframes flameAnimation {
+    0% {text-shadow: 0 0 20px #fefcc9,
+      10px -10px 30px #feec85,
+      -20px -20px 40px #ffae34,
+      20px -40px 50px #ec760c,
+      -20px -60px 60px #cd4606,
+      0 -80px 70px #973716,
+      10px -90px 80px #451b0e;}
+    100% {text-shadow: 0 0 20px #fefcc9,
+      10px -10px 30px #fefcc9,
+      -20px -20px 40px #feec85,
+      22px -42px 60px #ffae34,
+      -22px -58px 50px #ec760c,
+      0 -82px 80px #cd4606,
+      10px -90px 80px  #973716;}
+    }
+  @-webkit-keyframes flameAnimation {
+    0% {text-shadow: 0 0 20px #fefcc9,
+      10px -10px 30px #feec85,
+      -20px -20px 40px #ffae34,
+      20px -40px 50px #ec760c,
+      -20px -60px 60px #cd4606,
+      0 -80px 70px #973716,
+      10px -90px 80px #451b0e;}
+    100% {text-shadow: 0 0 20px #fefcc9,
+      10px -10px 30px #fefcc9,
+      -20px -20px 40px #feec85,
+      22px -42px 60px #ffae34,
+      -22px -58px 50px #ec760c,
+      0 -82px 80px #cd4606,
+      10px -90px 80px  #973716;}
+    }
+  @-o-keyframes flameAnimation {
+    0% {text-shadow: 0 0 20px #fefcc9,
+      10px -10px 30px #feec85,
+      -20px -20px 40px #ffae34,
+      20px -40px 50px #ec760c,
+      -20px -60px 60px #cd4606,
+      0 -80px 70px #973716,
+      10px -90px 80px #451b0e;}
+    100% {text-shadow: 0 0 20px #fefcc9,
+      10px -10px 30px #fefcc9,
+      -20px -20px 40px #feec85,
+      22px -42px 60px #ffae34,
+      -22px -58px 50px #ec760c,
+      0 -82px 80px #cd4606,
+      10px -90px 80px  #973716;}
+    }
+
+  #container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: black;
+    transition: background-color 4s ease-out;
+  }
+  
+  #backgroundContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.9) 100%), 
+      url('pictures/titlescreen.png');
+    background-size: cover; 
+    background-position: center;
+    animation: pulsate 10s ease-in-out infinite;
+  }
+
+  #titleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  #matrixLine {
+    display: inline-block;
+    position: absolute;
+    top: calc(50% + 10px);
+    color: white;
+    font-family: monospace;
+    font-size: 20px;
+    white-space: nowrap;
+  }
+
+  .char {
+    display: inline-block;
+    opacity: 0.8;
+    font-family: 'Harald Runic', sans-serif;
+    font-weight: bold;
+  }
+
+  .fire {
+    color: #ffedb1; 
+    text-align:center; 
+    font-family: 'titleFont', sans-serif, monospace; 
+    font-size: 150px; 
+    text-shadow:
+    0px -1px 3px #fff, /* Innermost layer - intense heat (white) */
+    0px -2px 6px #FF3, /* Second layer - core of flame (yellow) */
+    0px -6px 12px #F90, /* Middle layer - body of flame (orange) */
+    0px -10px 20px #C33; /* Outermost layer - edges of flame (red) */
+   }
+   
+ 
+   @keyframes flicker {
+       0%, 
+       100% { 
+           text-shadow: 
+               0 -1px 3px #fff, /* Innermost layer - intense heat (white) */
+               0 -2px 6px #FF3, /* Second layer - core of flame (yellow) */
+               0 -6px 12px #F90, /* Middle layer - body of flame (orange) */
+               0 -10px 20px #C33; /* Outermost layer - edges of flame (red) */
+       }
+       50% { 
+           text-shadow: 
+               0 -2px 6px #fff, /* Innermost layer - intense heat (white) */
+               0 -4px 12px #FF3, /* Second layer - core of flame (yellow) */
+               0 -8px 16px #F90, /* Middle layer - body of flame (orange) */
+               0 -12px 24px #C33; /* Outermost layer - edges of flame (red) */
+       }
+   }
+   
+   .fire {
+      margin-bottom: 0px;
+      animation: flicker 4s infinite; 
+   }
+
+  @keyframes pulsate {
+    0% { filter: brightness(60%); }
+    50% { filter: brightness(40%); }
+    100% { filter: brightness(60%); }
+  }
+
+  .damage-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('pictures/distress.png'); /* Your 'damage' overlay image */
+    background-size: cover;
+    pointer-events: none; /* Makes the overlay clickable-through */
+    opacity: 0.4;
+    filter: brightness(5%);
+    z-index: 0;
+  }
+
+
+  #titleScreen.fadeOut,
+  #titleContainer.fadeOut {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+  }
+
+  /* Optional: If you also want to fade out the background */
+  #backgroundContainer.fadeOut {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+  }
+  
+  #matrixLine.fadeOut {
+    animation: flameAnimation 3s ease-in-out infinite alternate;
+    -moz-animation: flameAnimation 3s ease-in-out infinite alternate;
+    -webkit-animation: flameAnimation 3s ease-in-out infinite alternate;
+    -o-animation: flameAnimation 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes loadingText {
+    0%, 10% { content: "Loading."; }
+    20%, 30% { content: "Loading.."; }
+    40%, 50% { content: "Loading..."; }
+  }
+
+  #loadingScreen {
+    position: absolute;
+    top: calc(50% + 100px);
+    background-color: black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-family: 'buttonFont', serif;
+    font-size: 24px;
+  } 
+
+  #loadingScreen div::after {
+    content: "Loading...";
+    animation: loadingText 1.5s steps(1, end) infinite;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  #cutsceneText {
+    position: absolute;
+    top: 50%; /* Position text vertically centered */
+    left: 50%; /* Position text horizontally centered */
+    transform: translate(-50%, -50%); /* Center the text within its container */
+    font-family: 'Norse', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    text-align: center;;
+    z-index: 1; /* Ensure the text is above the image */
+}
+
+.cutscene {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 0.5;}
+}
+
+#cutsceneImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0.5;
+    background: radial-gradient(circle, transparent 50%, black 100%);
+    
+    animation-name: fade-in;
+    animation-duration: 1s; /* This duration can be adjusted as needed */
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.cutscene::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.85)); /* Adjust gradient direction and opacity as needed */
+    z-index: 1; /* Ensure the gradient is above the image */
+}
+
+#cutsceneScreen.fadeOut {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+}
+
+#storyScreen {
+  position: relative; /* Allow absolute positioning within */
+  height: 100%;
+}
+
+#storyScreen.fadeOut {
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+
+.story-image {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative; 
+  overflow: hidden;
+}
+
+.story-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5) 70%);
+  pointer-events: none;
+}
+
+.story-image::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25%; /* Adjust the height to control the strength of the bottom vignette */
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1));
+  pointer-events: none;
+}
+
+.story-chat-box {
+  position: absolute;
+  bottom: 10px; /* Position at the bottom of the screen */
+  left: 200px; /* Add some space from the left */
+  right: 200px; /* Add some space from the right */
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+#storyChatBox{
+  border: 2px solid rgb(82 0 0);
+  background: rgb(14 14 14 / 80%); /* Semi-transparent background */
+}
+#storyContent {
+  height: 400px; /* Set the height of the text content */
+  overflow-y: auto; /* Keep to allow scrolling if content exceeds the height */
+  margin-bottom: 10px;
+}
+
+#storyContent::-webkit-scrollbar {
+  display: none;
+}
+
+#storyText {
+  font-family: 'Courier', monospace;
+  color: white;
+  font-weight: 600;
+}
+
+.choice-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.choice-buttons button {
+  font-family: 'Mate SC', serif;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.choice-buttons button:hover {
+  background-color: transparent;
+  transform: scale(1.1);
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  background-color: #ddd;
+  border-radius: 15%;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  flex-shrink: 0; /* Prevent the profile picture from shrinking */
+}
+
+.character-name {
+  font-weight: bold;
+}
+
+.dialogue {
+  margin-top: 4px;
+}
+
+/* Add this to your CSS */
+.message {
+  display: flex;
+  margin-bottom: 20px;
+  opacity: 0;
+  color: white;
+  font-weight: 100;
+  animation: fadeIn 1s forwards;
+  font-family: 'Courier', monospace;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
+
+.player-message {
+  justify-content: flex-end;
+}
+
+.player-message .profile-pic {
+  order: 2; /* Places the profile picture on the right */
+}
+
+.player-message .dialogue{
+  text-align: right;
+}
+
+/* Example styling adjustments to distinguish player messages further */
+.player-message {
+  font-weight: bold;
+}
+
+.choice-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.character-name {
+  color: #61cdff;
+}
+
+.player-name {
+  color: #059600;
+  text-align: right;
+}
+
+/* MAP SECTION */
+
+/* Style for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 84%;
+  max-height: 95%;
+  max-width: 1856px;
+  background-color: rgba(0,0,0,0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #000000;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Style for the map image */
+.map-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Additional styling for backdrop blur effect (optional) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+/* Style for the map button */
+#mapButton {
+  border: none;          
+  background: none;      
+  cursor: pointer;       
+  padding: 0;            
+  position: absolute;   
+  top: 15px;             
+  left: 14px;            
+  width: 70px;           
+  height: 70px;
+  z-index: 1;   
+}
+
+#mapButton img {
+  width: 100%;           
+  height: auto;          
+}
+
+#mapButton:hover {
+  transform: scale(1.1);
+} 
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px #ffa600, inset 0 0 8px #ffa600;
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 16px #ffa600, inset 0 0 16px #ffa600;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px #ffa600, inset 0 0 8px #ffa600;
+  }
+}
+
+.map-point {
+  position: absolute;
+  width: 15px;  
+  height: 15px; 
+  background-color: transparent;
+  border: 2px solid #ffa600; 
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffa600, inset 0 0 8px #ffa600;
+  animation: pulse 2s infinite linear;
+  cursor: pointer;
+}
+
+.map-point:hover {
+  animation-play-state: paused; 
+  background-color: #ffa600;
+}
+
+#mapContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#locationModal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+}
+
+.modal-content {
+  position: relative;
+  padding: 20px;
+  width: 90%;
+  height: 90%;
+  overflow: hidden; 
+}
+
+.modal-background-image {
+  position: absolute;
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+  top: 0;
+  left: 0;
+  z-index: 1; 
+}
+
+.modal-overlay {
+  position: relative;
+  top: 20%;
+  left:35%;
+  max-width: 30vw;
+  z-index: 2;
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; 
+}
+
+.image-wrapper img {
+  max-width: 100%; 
+  min-width: 10%;
+}
+
+/* Flexbox adjustments for smaller screens */
+@media (max-width: 600px) {
+  .content-wrapper {
+      flex-direction: column;
+  }
+}
+
+#locationTitle {
+  font-family: 'Mate SC';
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#skipButton {
+  border: none;          
+  background: none;      
+  cursor: pointer;       
+  padding: 0;            
+  position: absolute;   
+  top: 90px;             
+  left: 14px;            
+  width: 75px;           
+  height: 75px;
+  z-index: 1;   
+}
+
+#skipButton img {
+  width: 100%;           
+  height: auto;          
+}
+
+#skipButton:hover {
+  transform: scale(1.1);
+} 
+
+#hintModal {
+  position: absolute; 
+  z-index: 1; 
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  padding-right: 30px;
+  height: 20px;
+  width: auto; 
+  transform: translate(-50%, -10%);
+  top: 112px;
+  left: 310px;
+}
+
+#hintModal p {
+  font-family: 'Courier', monospace;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+}
+
+.hintClose {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  color: #fff7f7;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.hintClose:hover,
+.hintClose:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.characterModalClass {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.8);
+}
+
+.characterModalContent {
+  position: absolute;
+  font-family: 'Courier', monospace;
+  z-index: 1; 
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  height: 100px;
+  width: 500px; 
+  transform: translate(-50%, -10%);
+  top: 50%;
+  left: 50%;
+  color: white;
+  }
+
+#characterNameInput {
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 18px;
+  background-color: #f8f8f8;
+}
+
+#submitBtn{
+  background-color: #ff3c00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velorian</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Hint Modal-->
+<div id="hintModal" class="screen hidden">
+    <span class="hintClose">&times;</span>
+    <div class="hint-modal-content ">
+        <p>Click this button to display text instantly!</p>
+    </div>
+</div>
+
+<!-- Map Button -->
+<button id="mapButton" class="screen hidden">
+    <img src="pictures/mapicon.png" alt="Map"/>
+</button>
+
+<!-- Map Modal -->
+<div id="mapModal" class="modal">
+    <span class="close">&times;</span>
+    <img src="pictures/map.jpg" alt="Game Map" class="map-image">
+</div>
+
+<!-- Location structure -->
+<div id="locationModal" style="display: none;">
+    <div class="modal-content">
+        <img src="pictures/scrollBG-min.png" alt="Background" class="modal-background-image">
+        <div class="modal-overlay">
+            <span class="close">&times;</span>
+            <h2 id="locationTitle">Location Title</h2>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <img id="locationImage" src="" alt="Location image" style="width: 100%; max-width: 200px;"/>
+                </div>
+                <div class="info-wrapper">
+                    <ul>
+                        <li>Population: <span id="locationPopulation"></span></li>
+                        <li>Type: <span id="locationType"></span></li>
+                        <li>Territory: <span id="locationLocation"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <p id="locationDescription">Some description...</p>
+        </div>
+    </div>
+</div>
+<button id="skipButton" class="screen hidden" >
+    <img src="pictures/skipbutton.png" alt="Skip"/>
+</button>
+<div id="container">
+    <!-- Title Screen -->
+    <div id="titleScreen" class="screen">
+        <!-- Background Container for Animations -->
+        <div id="backgroundContainer">
+            <div id="blackOverlay"></div>
+            <div class="damage-overlay"></div>
+        </div>
+
+        <!-- Title and Button -->
+        <div id="titleContainer">
+            <h1 class="fire">Velorian</h1>
+            <button id="playButton">Play</button>
+        </div>
+
+        <!-- Matrix Line -->
+        <div id="matrixLine">
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <span class="char"> </span>
+                <!-- Add more spans as needed -->
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen">
+            <div></div>
+        </div>
+    </div>
+</div>
+
+<!-- Cutscene Section -->
+<div id="cutsceneScreen" class="screen hidden">
+    <div class="cutscene">
+        <img id="cutsceneImage" src="" alt="Cutscene Image" class="cutscene-img">
+            <!-- Image will be set dynamically via JavaScript -->
+        <p id="cutsceneText" class="text-overlay"></p>
+    </div>
+</div>
+
+<!-- Story and Choices Section -->
+<div id="storyScreen" class="screen hidden">
+    <!-- Container for the story image -->
+    <div id="storyImage" class="story-image">
+        <!-- Image will be set dynamically via JavaScript -->
+    </div>
+
+    <!-- Container for the story chat box -->
+    <div id="storyChatBox" class="story-chat-box">
+        <div id="storyContent">
+        </div>
+        <div id="choices" class="choice-buttons">
+            <!-- Choice buttons will be added dynamically via JavaScript -->
+        </div>
+    </div>
+</div>
+
+<div id="characterModal" class="characterModalClass" style="display: none;">
+
+    <!-- Modal content -->
+    <div class="characterModalContent">
+      <p>Your character is a female mage, what is her name?</p>
+      <input type="text" id="characterNameInput" value="">
+      <button onclick="updateCharacterName()" id="submitBtn">Submit</button>
+    </div>
+  </div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
